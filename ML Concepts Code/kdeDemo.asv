@@ -1,0 +1,16 @@
+function out = kdeDemo(in)
+close all,
+out = NaN;
+
+
+N = 100;
+x = rand(1,N);
+xGrid = linspace(-1,2,1001),
+kx = kernel(xGrid,x,0.1);
+pKDE = mean(kx);
+
+figure(1),
+plot(x,pKDE,'.'),
+
+function kx = kernel(xGrid,x,s)
+kx = exp(-((x-m)/s).^2)/sqrt(2*pi*s^2);
